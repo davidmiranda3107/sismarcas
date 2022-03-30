@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-15" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<body>
+	<table id="cabecera" width="100%">
+		<tr>
+			<td width="100%" height="100px"><h:panelGroup>
+				<div id="sistema"><h:outputText value="#{msg.tituloSistema}" /></div>
+				<div id="institucion"><h:outputText value="#{msg.titulo}" /></div>
+			</h:panelGroup> 
+			</td>
+		</tr>
+	</table>
+	<table width="100%" >
+	<tr style="font-weight: bold;" class="input-text-upper">
+			<td><h:outputText rendered="#{loginMB.loggedIn}" value="#{msg.lblUsuario}: " /><h:outputText
+				value="#{loginMB.objSession.usuario.usuNombre}" /></td>
+			<td align="right"><h:outputText value="#{loginMB.fechaSistema}">
+				<f:convertDateTime pattern="EEEE d 'de' MMMM 'de' yyyy" />
+			</h:outputText></td>
+		</tr>
+	</table>
+	
+	</body>
+</html>

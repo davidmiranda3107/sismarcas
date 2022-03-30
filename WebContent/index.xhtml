@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<div align="center">
+					<br /> <br /> <br />
+					<p:panel header="Ingreso al Sistema"
+						style="height:230px;width:450px;">
+						<p:focus for="usuario" />
+						<h:panelGrid columns="1" style="text-align: center;">
+							<h:panelGroup>
+								<h:panelGrid columns="2">
+									<h:graphicImage value="/resources/images/user-info.png" />
+									<h:panelGrid columns="2" style="text-align: left">
+										<h:outputText value="Usuario" />
+										<p:inputText id="usuario" value="#{loginMB.usuario}"
+											required="true" requiredMessage="Debe ingresar usuario"
+											converter="upperConverter" style="text-transform: uppercase"
+											maxlength="6" />
+										<h:outputText value="Clave" />
+										<p:password id="clave" value="#{loginMB.clave}"
+											required="true" requiredMessage="Debe ingresar clave" />
+										<h:outputText value="" />
+										<h:panelGroup layout="block"
+											style="font-size: 11px;text-align:right;align: right">
+											<p:commandLink value="#{msgApps['lbl.olvido.clave']}"
+												process="@this" update=":frmPassInt"
+												oncomplete="dlgPassIntwv.show();" />
+										</h:panelGroup>
+									</h:panelGrid>
+								</h:panelGrid>
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<p:commandButton id="ingresar" value="Ingresar" ajax="false"
+							action="#{loginMB.onLogin}" />
+						<p:commandButton id="limpiar" value="Limpiar" type="reset"
+							immediate="true" />
+						<p:defaultCommand target="ingresar" />
+					</p:panel>
+				</div>
+			</h:form>
+			<h:form id="frmPassInt">
+				<p:dialog id="dlgPassInt" widgetVar="dlgPassIntwv"
+					header="#{msgApps['lbl.olvido.clave']}" modal="true"
+					closeOnEscape="true" width="400">
+					<p:panel id="pdlgPassInt">
+						<div align="center">
+							<h:outputText value="#{msgApps['msg.info.reset.clave.int']}" />
+						</div>
+						<br />
+						<div align="center">
+							<p:panelGrid styleClass="borderless-pg">
+								<p:row>
+									<p:column style="width: 60px;">
+										<p:outputLabel for="resetCorreo"
+											value="#{msgApps['lbl.usuario']}" />
+									</p:column>
+									<p:column>
+										<p:inputText id="resetCorreo" value="#{loginMB.usuario}"
+											required="true"
+											requiredMessage="#{msgApps['msg.req.usuario']}"
+											style="width: 150px;text-transform: uppercase;"
+											converter="upperConverter" maxlength="6" />
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</div>
+						<br />
+						<div align="center">
+							<p:commandButton id="btnResetInt"
+								value="#{msgApps['lbl.enviar']}" process="@form"
+								oncomplete="handlePassInt(xhr, status, args)"
+								update="pdlgPassInt,:frm"
+								actionListener="#{loginMB.onGeneraClave}" />
+						</div>
+					</p:panel>
+				</p:dialog>
+			</h:form>
+			<script type="text/javascript">
+				function handlePassInt(xhr, status, args) {
+					if(args.validationFailed || !args.success) {
+						jQuery('#frmPassInt\\:dlgPassInt').effect("shake", { times:3 }, 100);
+					} else {
+						PF('dlgPassIntwv').hide();
+					}
+				}
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

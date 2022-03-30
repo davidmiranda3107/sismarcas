@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      <ui:composition template="/templates/template.xhtml">
+      	<ui:define name="content">
+			<h:form id="frm">
+				<div align="center">
+					<p:panel id="mainPanel"
+						header="Listado de Usuarios del Sistema"
+						styleClass="panel-titulo">
+						<br />
+						<p:fieldset legend="Lista Actual de usuarios">
+							<div align="center">
+								<br />
+								<p:dataTable id="dtUsuarios" var="reg"
+									value="#{usuarioMB.listadoUsuarios}" rowKey="#{reg.usuId}"
+									selection="#{usuarioMB.usuario}" selectionMode="single"
+									paginator="true" rows="5" rowsPerPageTemplate="5,10,15,20,25"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									paginatorPosition="bottom"
+									emptyMessage="No hay usuarios"
+									styleClass="custom-dt-borderless">
+								</p:dataTable>
+							</div>
+						</p:fieldset>		
+					</p:panel>	
+				</div>
+			</h:form>
+		</ui:define>
+      </ui:composition>
+</html>

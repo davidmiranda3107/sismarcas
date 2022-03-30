@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="sismarcas" transaction-type="JTA">
+		<jta-data-source>jdbc/sismar</jta-data-source>
+		<class>portal.entities.AdmMenuRole</class>
+		<class>portal.entities.AdmRolesPermiso</class>
+		<class>portal.entities.AdmUsuariosPermiso</class>
+		<class>portal.entities.AdmMenu</class>
+		<class>portal.entities.AdmPermiso</class>
+		<class>portal.entities.AdmRole</class>
+		<class>portal.entities.AdmUsuario</class>
+		<class>portal.entities.Contador</class>
+		<class>portal.entities.MrcClases</class>
+		<class>portal.entities.MrcEstadoMarca</class>
+		<class>portal.entities.MrcPais</class>
+		<class>portal.entities.MrcTiposMarca</class>
+		<class>portal.entities.MrcTipoSolicitud</class>
+		<class>portal.entities.MrcCliente</class>
+		<class>portal.entities.MrcMarca</class>
+		<class>portal.entities.MrcMarcasClases</class>
+		<class>portal.entities.MrcMarcasDocumento</class>
+		<class>portal.entities.MrcMarcasPost</class>
+		<class>portal.entities.MrcMarcasTracking</class>
+		<class>portal.entities.MrcServiciosMarca</class>
+		<class>portal.entities.MrcTipoProceso</class>
+		<class>portal.entities.MrcTipoSituacion</class>
+		<class>portal.entities.MrcTitulares</class>
+	</persistence-unit>
+</persistence>
